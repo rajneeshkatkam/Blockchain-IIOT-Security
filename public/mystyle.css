@@ -1,0 +1,65 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 0.4%;
+    padding-top:0.4%;
+    background-color:#222;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+#mynetwork {
+    margin-top:-2%;
+    width: 400px;
+    height: 300px;
+}
+#total{
+    padding-right:0;
+    padding-left:2%;
+    margin-right:2%;
+    margin-left:auto;
+    margin-top:-2%;
+ }
+#navbar{
+    margin-bottom:3%;
+}
+#mid_col{
+    padding-right:5%;
+    padding-bottom:5%;
+    padding-left:5%;
+}
+#right_col{
+    padding: 0% 4% 5% 4%;
+}
+
+.freqchart{
+    position: relative;
+    background: #fff; 
+    top: 0%; 
+    left: 0.5%; 
+    right: 50.1%; 
+    bottom: 50.1%;
+}
+.voltagechart{
+    position: relative;
+    background: #fff; 
+    top: 0%; 
+    left: 0%; 
+    right: 0.5%; 
+    bottom: 50.1%}
+.currentchart{
+    position: relative;
+    background: #fff; 
+    top: 50.1%; 
+    left: 0.5%; 
+    right: 50.1%; 
+    bottom: 0.5%}
+.powerchart{
+    position: relative;
+    background: #fff; 
+    top: 50.1%; 
+    left: 0%; 
+    right: 0.5%; 
+    bottom: 0.5%}  

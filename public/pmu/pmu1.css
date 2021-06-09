@@ -1,0 +1,55 @@
+#freqchart{
+    position: absolute;
+    background: #fff; 
+    top: 0.5%; 
+    left: 0.5%; 
+    right: 50.1%; 
+    bottom: 50.1%}
+#voltagechart{
+    position: absolute;
+    background: rgb(168, 14, 14); 
+    top: 0.5%; 
+    left: 50.1%; 
+    right: 0.5%; 
+    bottom: 50.1%}
+#currentchart{
+    position: absolute;
+    background: #fff; 
+    top: 50.1%; 
+    left: 0.5%; 
+    right: 50.1%; 
+    bottom: 0.5%}
+#powerchart{
+    position: absolute;
+    background: #fff; 
+    top: 50.1%; 
+    left: 50.1%; 
+    right: 0.5%; 
+    bottom: 0.5%}  
+canvas{
+    width:600px !important;
+    height:280px !important;
+}
+#freq {
+    position:absolute; 
+    width:100%;
+    height: 90%;
+    }
+
+.goo{
+    font-size: 1em;
+    }
+.chart-container{
+    margin-top: -30px;
+    }
+#absolute{
+    position:absolute;
+    bottom:0%;
+    width:100%;
+    /* height:100%;  */
+    color:whitesmoke;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    padding: none;
+    }

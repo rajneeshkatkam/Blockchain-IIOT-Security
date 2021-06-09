@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="mystyle.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/vis.min.css" type="text/css">
+        <link rel="stylesheet" href="css/morris.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="js/vis.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>        
+        <script src="js/raphael-min.js"></script>
+        <script src="js/csvjson.min.js"></script>
+        <script src="js/csvjson.js"></script>
+        <script src="js/morris.min.js"></script>
+        <script src="initial.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>      
+        <script src="js/app.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        
+    </head>
+    <body>
+        <nav id="navbar" class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">RangerZ</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active" id="homepage"><a href="#">Home</a></li>
+                    <li id = "first"><a href="#">Page 1</a></li>
+                    <li id = "second"><a href="#">Page 2</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Tab4</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Tab5</a></li>
+                </ul>
+            </div>
+        </nav>    
+        <!-- Header ends -->
+        <div id="total" class="container-fluid">
+            <div class="col-sm-3">
+                <div class="row">
+                    <p1>Notification Panel</p1>
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                <th>No.</th>
+                                <th>Notification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>1</td>
+                                <td>Doe</td>
+                                </tr>
+                                <tr>
+                                <td>2</td>
+                                <td>Moe</td>
+                                </tr>
+                                <tr>
+                                <td>3</td>
+                                <td>Dooley</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <p2>Blockchain</p2>  
+                </div>
+                </div>
+                <div id="mid_col" class="col-sm-5">
+                    <div class="row">
+                        <p3>Blockchain</p3>
+                        <div id="visualization">
+                            <div class="menu">
+                                <input type="button" class="btn" id="zoomIn" value="Zoom in"/>
+                                <input type="button" class="btn" id="zoomOut" value="Zoom out"/>
+                                <input type="button" class="btn" id="moveLeft" value="Move left"/>
+                                <input type="button" class="btn" id="moveRight" value="Move right"/>
+                                <input type="button" class="btn" id="fit" value="Default">
+                            </div>
+                        </div>
+                        <div id="visualization"></div>  
+                    </div> 
+                    <div class="row">
+                        <p4>Blockchain history</p4>  
+                    </div>               
+                </div>
+                <div id="right_col" class="col-sm-3">
+                    <div id="row5"class="row">
+                        <p5>Network Architecture</p5>   
+                        <div id="mynetwork"></div>                         
+                    </div>
+                    <div class="row">
+                        <p6>Notification Panel</p6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network map -->
+         
+        <!-- Network map ends -->
+
+        <!-- CHARTJS WITH MODAL  -->
+        <div id= "createdid">       
+            <div id="5" class="modal fade bs-example-modal-lg" >
+                <div  class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button><h4 class="modal-title"> PMU 1</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>hi</p>
+                            <div id="PMU1" data-toggle="modal" data-target="#ModChart2">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <canvas id="freqchart1" class="freqchart"></canvas>
+                                        <canvas id ="currentchart1" class="currentchart"></canvas>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <canvas id ="voltagechart1" class="voltagechart"></canvas>
+                                        <canvas id="powerchart1" class="powerchart"></canvas> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>                
+                </div>
+            </div>
+            <div  id = "6" class="modal fade charts-modal bs-example-modal-lg" >
+                    <div class="modal-dialog modal-lg" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button class="close" data-dismiss="modal"><span>&times;</span></button><h4 class="modal-title"> PMU 2</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div id="PMU2" data-toggle="modal" data-target="#ModChart2">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <canvas id="freqchart2" class="freqchart"></canvas>
+                                            <canvas id ="currentchart2" class="currentchart"></canvas>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <canvas id ="voltagechart2" class="voltagechart"></canvas>
+                                            <canvas id="powerchart2" class="powerchart"></canvas> 
+                                        </div>
+                                    </div>                                
+                                </div>
+                            </div>                        
+                        </div>                
+                    </div>
+                </div>
+                <div id="7" class="modal fade bs-example-modal-lg" >
+                        <div  class="modal-dialog modal-lg" >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <button class="close" data-dismiss="modal"><span>&times;</span></button><h4 class="modal-title"> PMU 3</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>hi</p>
+                                    <div id="PMU3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <canvas id="freqchart3" class="freqchart"></canvas>
+                                                <canvas id ="currentchart3" class="currentchart"></canvas>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <canvas id ="voltagechart3" class="voltagechart"></canvas>
+                                                <canvas id="powerchart3" class="powerchart"></canvas> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                        
+                            </div>                
+                        </div>
+                    </div>               
+                    <div id="8" class="modal fade bs-example-modal-lg" >
+                            <div  class="modal-dialog modal-lg" >
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <button class="close" data-dismiss="modal"><span>&times;</span></button><h4 class="modal-title"> PMU 4</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>hi</p>
+                                        <div id="PMU4">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <canvas id="freqchart4" class="freqchart"></canvas>
+                                                    <canvas id ="currentchart4" class="currentchart"></canvas>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <canvas id ="voltagechart4" class="voltagechart"></canvas>
+                                                    <canvas id="powerchart4" class="powerchart"></canvas> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                        
+                                </div>                
+                            </div>
+                        </div>              
+
+            </div>
+        </div> 
+        <!-- Chartjs with MODAL ends -->
+        
+        
+
+
+        <div class="footer">
+            <p>Blockchain Based Intrusion Prevention System</p>
+        </div>
+    </body>
+
+
+<!-- <script type="text/javascript">
+    
+
+     if (typeof web3 !== 'undefined') {
+           web3 = new Web3(web3.currentProvider);
+       } else {
+           web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8543"));
+       }
+
+       web3.eth.defaultAccount = web3.eth.accounts[0];
+
+       var CoursetroContract = web3.eth.contract([
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "dec",
+                "type": "bool"
+            },
+            {
+                "name": "o",
+                "type": "int256"
+            },
+            {
+                "name": "f",
+                "type": "int256"
+            },
+            {
+                "name": "_voltage",
+                "type": "int256"
+            },
+            {
+                "name": "_current",
+                "type": "int256"
+            },
+            {
+                "name": "_frequency",
+                "type": "int256"
+            }
+        ],
+        "name": "setData",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "anyoneCalled",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "trigger",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "consensus",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "registerPmu",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "k",
+                "type": "uint256"
+            }
+        ],
+        "name": "getOpinion",
+        "type": "event"
+    }
+]);
+
+      var Appcontractspmu = CoursetroContract.at("0x8bfae488b65172ad046c9dde76c1d5f73e417b16");
+
+       console.log(Appcontractspmu.consensus());
+
+     var pmuEvent=Appcontractspmu.getOpinion();
+     pmuEvent.watch(function(error, result){
+            if (!error)
+                {
+                    console.log("hello");
+                } else {
+                    
+                    console.log(error);
+                }
+        });
+</script>
+ -->
+</html> 

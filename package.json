@@ -1,0 +1,23 @@
+{
+  "name": "ninja",
+  "version": "1.0.0",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "socket.io": "^2.1.1",
+    "socketio": "^1.0.0",
+    "web3": "^1.0.0-beta.36"
+  },
+  "description": ""
+}

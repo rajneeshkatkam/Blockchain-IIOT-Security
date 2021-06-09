@@ -1,0 +1,364 @@
+<div id ="PMU" class="modal-body">
+                                <p>hi</p>
+                                <div id="PMU2" data-toggle="modal" data-target="#ModChart2">
+                                    <div id = "freqchart2" class="freqchart ">
+                                        <h6 class = "goo text-center">Frequency Chart</h6>
+                                        <div >
+                                            <div class="chart-container" align="center">
+                                                <canvas id="freq-chart2"></canvas>
+                                            </div>       
+                                        </div>
+                                    </div>
+                                    <div id = "voltagechart2" class="voltagechart">
+                                        <h6 class ="goo text-center">Voltage Chart</h6>
+                                        <div >
+                                        <div class="chart-container" align="center">
+                                            <canvas id="voltage-chart2" ></canvas>
+                                        </div>       
+                                        </div>
+                                    </div>
+                                    <div id = "currentchart2" class="currentchart">
+                                        <h6 class = "goo text-center">Current Chart</h6>
+                                        <div >
+                                        <div class="chart-container" align="center">
+                                            <canvas id="current-chart2" ></canvas>
+                                        </div>       
+                                        </div>
+                                    </div>
+                                    <div id = "powerchart2" class="powerchart">
+                                        <h6 class = "goo text-center">Power Chart</h6>
+                                        <div>
+                                            <div class="chart-container" align="center">
+                                                <canvas id="power-chart2" ></canvas>
+                                            </div>       
+                                        </div>
+                                    </div>
+
+                                </div>
+
+.freqchart{
+    position: absolute;
+    background: #fff; 
+    top: 0.5%; 
+    left: 0.5%; 
+    right: 50.1%; 
+    bottom: 50.1%}
+.voltagechart{
+    position: absolute;
+    background: rgb(168, 14, 14); 
+    top: 0.5%; 
+    left: 50.1%; 
+    right: 0.5%; 
+    bottom: 50.1%}
+.currentchart{
+    position: absolute;
+    background: #fff; 
+    top: 50.1%; 
+    left: 0.5%; 
+    right: 50.1%; 
+    bottom: 0.5%}
+.powerchart{
+    position: absolute;
+    background: #fff; 
+    top: 50.1%; 
+    left: 50.1%; 
+    right: 0.5%; 
+    bottom: 0.5%}  
+#PMU{
+    position:absolute; 
+    width:100%;
+    height: 90%;
+    }
+
+.goo{
+    font-size: 1em;
+    }
+.chart-container{
+    margin-top: -30px;
+    }
+
+
+
+$(document).ready(function(){
+    /* ChartJs Library */
+    var freqcha2 = {
+        type: 'line',
+        data: {
+          labels: [0],
+          datasets: [{ 
+              data: [0],
+              label: "Actual Frequency in Hz",
+              borderColor: "#3e95cd",
+              fill: false
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }],
+              xAxes : [{
+
+                  ticks: {
+                      autoskip: true,
+                      maxTicksLimit: 10
+                  }
+              }]
+          }
+          
+      }
+  }
+  var voltagecha2 = {
+        type: 'line',
+        data: {
+          labels: [0],
+          datasets: [{ 
+              data: [0],
+              label: "Actual Voltage in Volts",
+              borderColor: "#3e95cd",
+              fill: false
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }],
+              xAxes : [{
+
+                  ticks: {
+                      autoskip: true,
+                      maxTicksLimit: 10
+                  }
+              }]
+          }
+          
+        }
+  }
+  var currentcha2 = {
+        type: 'line',
+        data: {
+          labels: [0],
+          datasets: [{ 
+              data: [0],
+              label: "Actual Current in Amperes",
+              borderColor: "#3e95cd",
+              fill: false
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }],
+              xAxes : [{
+
+                  ticks: {
+                      autoskip: true,
+                      maxTicksLimit: 10
+                  }
+              }]
+          }
+          
+        }
+  }
+  var powercha2 = {
+        type: 'line',
+        data: {
+          labels: [0],
+          datasets: [{ 
+              data: [0],
+              label: "Actual Power in KW",
+              borderColor: "#3e95cd",
+              fill: false
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }],
+              xAxes : [{
+
+                  ticks: {
+                      autoskip: true,
+                      maxTicksLimit: 10
+                  }
+              }]
+          }
+          
+        }
+  }
+    /* ChartJs Ends */
+
+
+    /* Visjs Timeline */
+    var container1 = document.getElementById('visualization');
+
+    // Create a DataSet (allows two way data-binding)
+    var items = new vis.DataSet([
+        {id: 1, content: 'Block 1', start: '0', end: '1'},
+        {id: 2, content: 'Block 2', start: '1', end: '3'},
+        {id: 3, content: 'Block 3', start: '2'},
+        {id: 4, content: 'Block 4', start: '3'},
+        {id: 5, content: 'Block 5', start: '4'},
+        {id: 6, content: 'Block 6', start: '5'}
+    ]);
+
+    // Configuration for the Timeline
+    var options = {
+/*         width: '100%',
+        height: '30px',
+        margin: {
+          item: 100,
+        } */
+      };
+
+    // Create a Timeline
+    var timeline = new vis.Timeline(container1, items, options);
+    function move (percentage) {
+        var range = timeline.getWindow();
+        var interval = 1;
+
+        timeline.setWindow({
+            start: range.start.valueOf() - interval * percentage,
+            end:   range.end.valueOf()   - interval * percentage
+        });
+    }    
+
+    // attach events to the navigation buttons
+    document.getElementById('zoomIn').onclick    = function () { zoom(-0.2); };
+    document.getElementById('zoomOut').onclick   = function () { zoom( 0.2); };
+    document.getElementById('moveLeft').onclick  = function () { move( 0.2); };
+    document.getElementById('moveRight').onclick = function () { move(-0.2); };
+    document.getElementById('fit').onclick       = function () { timeline.fit(); };
+    /* VisJs Timeline Ends */
+
+    /* Network Visualization Library */
+
+    var nodes = new vis.DataSet([
+        {id: 1, shape: 'image', 
+        image: 'images/kafka.png', label: 'Kakfa 1'},
+        {id: 2, shape: 'image', 
+        image: 'images/kafka.png', label: 'Kafka 2'},
+        {id: 3, shape: 'image', 
+        image: 'images/kafka.png', label: 'Kafka 3'},
+        {id: 4, shape: 'image', 
+        image: 'images/kafka.png', label: 'Kafka 4'},
+        {id: 5, shape: 'image', 
+        image: 'images/pmu.png', label: 'PMU 1'},
+        {id: 6, shape: 'image', 
+        image: 'images/pmu.png', label: 'PMU 2'},
+        {id: 7, shape: 'image', 
+        image: 'images/pmu.png', label: 'PMU 3'},
+        {id: 8, shape: 'image', 
+        image: 'images/pmu.png', label: 'PMU 4'}
+    ]);
+    
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 5, to: 1},
+        {from: 6, to: 2},
+        {from: 7, to: 3},
+        {from: 8, to: 4},
+        {from: 1, to: 2},
+        {from: 2, to: 3},
+        {from: 3, to: 4},
+        {from: 4, to: 1},
+        {from: 1, to: 3},
+        {from: 2, to: 4},
+    ]);
+    
+    // create a network
+    var container = document.getElementById('mynetwork');
+    
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+        nodes: {
+          borderWidth:0,
+          size:42,
+          color: {
+            border: '#222',
+            background: 'transparent'
+          },
+          font: {
+            color: '#111',
+            face: 'Walter Turncoat',
+            size: 16,
+            strokeWidth: 1,
+            strokeColor: '#222'
+          }
+        },
+        edges: {
+          color: {
+            color: '#CCC',
+            highlight: '#A22'
+          },
+          width: 3,
+          length: 275,
+          hoverWidth: .05
+        }
+      }
+    // initialize your network!
+    
+    var network = new vis.Network(container, data, options);
+    network.on( 'click', function(properties) {
+        var ids = properties.nodes;
+        var clickedNodes = nodes.get(ids);
+        if(ids == 5){
+            $("#5q").modal("show");
+            
+            
+        }
+        if(ids == 6){
+            $('#6').modal('show');  
+            
+            var freqch2 = document.getElementById("freq-chart2");
+            var voltagech2 = document.getElementById("voltage-chart2");
+            var currentch2 = document.getElementById("current-chart2");
+            var powerch2 = document.getElementById("power-chart2");
+            
+            var freq2 = new Chart(freqch2, freqcha2);
+            var voltage2 = new Chart(voltagech2, voltagecha2);
+            var current2 = new Chart(currentch2, currentcha2);
+            var power2 = new Chart(powerch2, powercha2);
+        }
+        if(ids == 7){
+            $("#7").modal("show");
+        }
+        if(ids == 8){
+            $("#8").modal("show");
+        }
+    });
+
+    /* Network Visualization Library Ends */
+});
